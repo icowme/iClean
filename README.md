@@ -5,7 +5,7 @@
 Chrome 扩展（Manifest V3）· 离线运行 · 不上传任何数据 · 无账号
 
 ![清理当前站点](docs/screenshots/user-shot-site.png)
-
+![高级功能](docs/screenshots/user-shot-settings.png)
 ---
 
 ## 功能
