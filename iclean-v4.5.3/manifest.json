@@ -1,0 +1,92 @@
+{
+  "manifest_version": 3,
+  "name": "iClean · 浏览器数据清理",
+  "version": "4.5.3",
+  "description": "一键清理当前站点或全局的 Cookie、缓存、Storage 等浏览数据；内置鼠标手势、超级拖拽与书签新标签打开",
+  "default_locale": "en",
+  "permissions": [
+    "browsingData",
+    "storage",
+    "tabs",
+    "activeTab",
+    "scripting",
+    "search",
+    "sessions",
+    "bookmarks",
+    "declarativeNetRequest",
+    "webNavigation",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "js/constants.js",
+        "js/gesture-visual.js",
+        "js/gesture-recognizer.js",
+        "js/content.js",
+        "js/auto-copy.js",
+        "js/show-password.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": false,
+      "match_origin_as_fallback": true
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "cancel.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "iClean · 清理浏览数据",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background/background.js"
+  },
+  "options_ui": {
+    "page": "src/options/options.html",
+    "open_in_new_tab": true
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "commands": {
+    "clean-current-page": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+K",
+        "mac": "Command+Shift+K"
+      },
+      "description": "清理当前页面的浏览数据"
+    }
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "newtab_redirect",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  }
+}

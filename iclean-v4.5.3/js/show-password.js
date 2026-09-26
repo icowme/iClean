@@ -1,0 +1,5 @@
+/*! iClean · 浏览器数据清理工具
+ *  Copyright (c) 2026 iClean. All rights reserved.
+ *  本文件为原创代码，未经授权禁止转载、二次分发或用于商业用途。
+ */
+!function(){"use strict";var e=new WeakSet,t=!0;try{chrome.storage.sync.get({showPassword:!0},function(e){(t=!1!==e.showPassword)||a()}),chrome.storage.onChanged.addListener(function(e,o){"sync"===o&&e.showPassword&&((t=!1!==e.showPassword.newValue)||a())})}catch(e){}function a(){for(var t=document.querySelectorAll('input[type="text"]'),a=0;a<t.length;a++)e.has(t[a])&&(t[a].type="password",e.delete(t[a]))}document.addEventListener("mouseover",function(a){if(t){var o=a.target;o&&"INPUT"===o.tagName&&"password"===o.type&&(o.type="text",e.add(o))}},!0),document.addEventListener("mouseout",function(t){var a=t.target;a&&"INPUT"===a.tagName&&e.has(a)&&(t.relatedTarget&&a.contains(t.relatedTarget)||(a.type="password",e.delete(a)))},!0)}();
