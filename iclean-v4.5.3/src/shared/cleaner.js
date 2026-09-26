@@ -1,5 +1,0 @@
-/*! iClean · 浏览器数据清理工具
- *  Copyright (c) 2026 iClean. All rights reserved.
- *  本文件为原创代码，未经授权禁止转载、二次分发或用于商业用途。
- */
-function ccCleanSite(e,r,n){var t=ccFilterOriginAware(n),o=ccBuildDataTypeSet(t),c=t.slice(),i=[];return Object.keys(o).length&&i.push(new Promise(function(r,n){var t=Date.now();chrome.browsingData.remove({origins:[e],since:0},o,function(){console.debug("[iClean] browsingData.remove("+Object.keys(o).join(",")+") 耗时 "+(Date.now()-t)+"ms"),chrome.runtime.lastError?n(new Error(chrome.runtime.lastError.message)):r()})})),-1!==n.indexOf("sessionStorage")&&r&&i.push(chrome.scripting.executeScript({target:{tabId:r},func:function(){try{sessionStorage.clear()}catch(e){}}}).then(function(){c.push("sessionStorage")}).catch(function(){})),Promise.all(i).then(function(){return c})}function ccCleanAll(e,r){var n=ccBuildDataTypeSet(e);return new Promise(function(t,o){chrome.browsingData.remove({since:"number"==typeof r?r:0,originTypes:{unprotectedWeb:!0}},n,function(){chrome.runtime.lastError?o(new Error(chrome.runtime.lastError.message)):t(e.slice())})})}
