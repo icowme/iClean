@@ -4,7 +4,9 @@
 
 Chrome 扩展（Manifest V3）· 离线运行 · 不上传任何数据 · 无账号
 
-![去广告面板](docs/screenshots/user-shot-ad.png)
+| 去广告 | 清理 | 高级功能 |
+| :---: | :---: | :---: |
+| <img src="docs/screenshots/user-shot-ad.png" width="260" alt="去广告面板"> | <img src="docs/screenshots/user-shot-site.png" width="254" alt="清理面板"> | <img src="docs/screenshots/user-shot-settings.png" width="208" alt="高级功能"> |
 
 ---
 
