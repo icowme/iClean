@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>iClean · 浏览器数据清理与效率工具</title>
+<title>iClean · 净化广告 · 垃圾清理 · 鼠标手势（Chrome 扩展）</title>
 <style>
   :root {
     --primary: #4f7cff;
@@ -92,7 +92,8 @@
     font-weight: 500;
     color: var(--text);
     background: #ffffff;
-    border: 1px solid var(--line);
+    /* 边框比全局的 --line(#eceef2) 深一档：白色药丸形按钮配这么浅的边几乎看不出轮廓 */
+    border: 1px solid #cfd6e1;
     border-radius: 999px;
     transition: color .15s ease, border-color .15s ease, background .15s ease;
   }
@@ -162,6 +163,11 @@
     color: var(--text-2);
     line-height: 1.65;
   }
+  /* 行内代码（utm_source 这类参数名） */
+  .feature-text code {
+    font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12.5px;
+    background: #eef2f9; color: #3d4a5c; padding: 1px 5px; border-radius: 4px;
+  }
   .feature-img { display: flex; justify-content: center; }
   .feature-img img {
     max-width: 100%;
@@ -209,7 +215,6 @@
     .feature.reverse .feature-text { order: 0; }
     .feature.reverse .feature-img { order: 0; }
     .nav-links { gap: 14px; }
-    .hide-sm { display: none; }
   }
 </style>
 </head>
@@ -222,7 +227,6 @@
       <span>iClean</span>
     </div>
     <div class="nav-links">
-      <a href="#features" class="hide-sm">功能</a>
       <a href="#donate" class="nav-donate">&#10084; 赞赏作者</a>
     </div>
   </div>
@@ -231,12 +235,12 @@
 <header class="hero" id="top">
   <div class="container">
     <h1>让浏览器轻装上阵<br>顺手多一点效率</h1>
-    <p>一键清理站点数据，内置鼠标手势、超级拖拽与书签新标签打开，让浏览更顺手。</p>
+    <p>内置 AdGuard 规则集，装完即拦广告与跟踪参数；一键清理 Cookie / 缓存 / Storage 等垃圾数据；还有鼠标手势与超级拖拽。</p>
     <a class="btn-primary" href="#features">看看功能</a>
 
     <div class="download-row">
       <!-- ↓↓↓ 把下面两个 href="#" 换成你自己的链接 ↓↓↓ -->
-      <a class="btn-download" href="#" target="_blank" rel="noopener">
+      <a class="btn-download" href="https://ourl.cn/HB3ZJD" target="_blank" rel="noopener">
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -245,7 +249,7 @@
         </svg>
         网盘下载
       </a>
-      <a class="btn-download" href="#" target="_blank" rel="noopener">
+      <a class="btn-download" href="https://github.com/icowme/iClean" target="_blank" rel="noopener">
         <svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
         </svg>
@@ -264,6 +268,29 @@
 
     <div class="feature">
       <div class="feature-text">
+        <h3>净化广告</h3>
+        <div class="mini-list">
+          <div class="mini-item">
+            <h4>广告拦截</h4>
+            <p>内置 AdGuard Base + 中文规则集，<strong>装完即拦，不用自己订阅</strong>。</p>
+          </div>
+          <div class="mini-item">
+            <h4>从网址移除跟踪参数</h4>
+            <p>跳转时去掉 <code>utm_source</code>、<code>fbclid</code> 等跟踪参数。</p>
+          </div>
+          <div class="mini-item">
+            <h4>禁用网页 WebRTC</h4>
+            <p>网页拿不到你的本机地址（<strong>不是隐藏真实 IP</strong>）。</p>
+          </div>
+        </div>
+      </div>
+      <div class="feature-img">
+        <img src="screenshots/user-shot-ad.png" alt="去广告面板界面" loading="lazy">
+      </div>
+    </div>
+
+    <div class="feature reverse">
+      <div class="feature-text">
         <h3>清理当前站点数据</h3>
         <p>针对当前访问的站点清理 Cookie、缓存、Storage、IndexedDB 等，不影响其他站点，不必手动查找设置。</p>
         <p class="feature-note">支持选择清理模式：标准 清理常用项，彻底 包含历史与下载记录。</p>
@@ -273,7 +300,7 @@
       </div>
     </div>
 
-    <div class="feature reverse">
+    <div class="feature">
       <div class="feature-text">
         <h3>一键清理全部</h3>
         <p>清理所有站点的数据，带 二次确认 防止误触，执行后 自动刷新所有网页，底部会显示本次清理了多少类、耗时多久。</p>
@@ -283,37 +310,27 @@
       </div>
     </div>
 
-    <div class="feature">
-      <div class="feature-text">
-        <h3>鼠标手势与超级拖拽</h3>
-        <p>按住右键划动即可执行后退、前进、滚动、切换标签等操作；超级拖拽支持拖动文字搜索、拖动链接新标签打开、拖动图片打开图片。</p>
-        <p class="feature-note">由开源项目 FlowMouse（GPL v3）提供支持。</p>
-      </div>
-      <div class="feature-img">
-        <img src="screenshots/user-shot-settings.png" alt="手势与拖拽设置界面截图" loading="lazy">
-      </div>
-    </div>
-
     <div class="feature reverse">
       <div class="feature-text">
-        <h3>更多实用小功能</h3>
+        <h3>鼠标手势与效率增强</h3>
         <div class="mini-list">
           <div class="mini-item">
+            <h4>鼠标手势与超级拖拽</h4>
+            <p>按住右键划动执行后退、前进、滚动、切换标签；拖动文字搜索、拖动链接新标签打开。</p>
+          </div>
+          <div class="mini-item">
             <h4>书签在新标签打开</h4>
-            <p>点击书签时在新标签打开，当前页面保持不动；通过 Chrome 原生机制实现，不改写你的书签地址，收藏状态与位置显示正常。</p>
+            <p>点击书签在新标签打开，当前页面保持不动，不改写书签地址。</p>
           </div>
           <div class="mini-item">
-            <h4>选中文字自动复制</h4>
-            <p>选中段落文字即自动复制到剪贴板，无需按 Ctrl+C；在输入框内不会触发，避免干扰输入。</p>
-          </div>
-          <div class="mini-item">
-            <h4>鼠标悬停显示密码</h4>
-            <p>鼠标移到密码框上会明文显示密码，移开自动恢复星号。在需要频繁输入密码的场景很方便，注意在公共场合谨慎开启。</p>
+            <h4>选中自动复制 / 悬停显密码 / 中键剪贴板</h4>
+            <p>选中即复制、密码框悬停显明文、中键读剪贴板里的网址。</p>
           </div>
         </div>
+        <p class="feature-note">手势与超级拖拽由开源项目 FlowMouse（GPL v3）提供支持。</p>
       </div>
       <div class="feature-img">
-        <img src="screenshots/user-shot-settings.png" alt="高级功能页面" loading="lazy">
+        <img src="screenshots/user-shot-settings.png" alt="高级功能页面截图" loading="lazy">
       </div>
     </div>
 
@@ -335,7 +352,7 @@
       <a href="#top">回到顶部</a>
     </div>
     <p>本软件为开源工具，按「现状」提供，使用前请知悉数据清理不可撤销。</p>
-    <p style="margin-top:6px">iClean v4.5.3 &middot; 部分功能源自 FlowMouse（GPL v3）与 Open Bookmarks in New Tab（MIT）与Starpassword</p>
+    <p style="margin-top:6px">iClean v4.17.7 &middot; 部分功能源自 FlowMouse（GPL v3）与 Open Bookmarks in New Tab（MIT）与Starpassword</p>
   </div>
 </footer>
 
